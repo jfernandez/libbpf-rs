@@ -57,11 +57,6 @@ impl UserRingBuffer {
         unsafe {
             libbpf_sys::user_ring_buffer__submit(self.ptr.as_ptr(), sample as *mut T as *mut c_void);
         }
-        let errno = unsafe { *libc::__errno_location() };
-        if errno != 0 {
-            // Return an error if errno is set
-            return Err(Error::from_raw_os_error(errno));
-        }
 
         // Return Ok if no errors occurred
         Ok(())
