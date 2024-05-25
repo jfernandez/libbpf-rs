@@ -186,11 +186,27 @@ impl RingBuffer<'_> {
         unsafe { libbpf_sys::ring_buffer__consume(self.ptr.as_ptr()) }
     }
 
+    /// Consume `n` events from the ring buffer.
+    /// 
+    /// Return the amount of events consumed, or a negative value in case of error.
+    pub fn consume_n_raw(&self, n: usize) -> i32 {
+        unsafe { libbpf_sys::ring_buffer__consume_n(self.ptr.as_ptr(), n as c_ulong) }
+    }
+
     /// Greedily consume from all open ring buffers, calling the registered
     /// callback for each one. Consumes continually until we run out of events
     /// to consume or one of the callbacks returns a non-zero integer.
     pub fn consume(&self) -> Result<()> {
         let ret = self.consume_raw();
+
+        util::parse_ret(ret)
+    }
+
+    /// Consume `n` events from the ring buffer.
+    /// 
+    /// Return the amount of events consumed, or a negative value in case of error.
+    pub fn consume_n(&self, n: usize) -> Result<()> {
+        let ret = self.consume_n_raw(n);
 
         util::parse_ret(ret)
     }

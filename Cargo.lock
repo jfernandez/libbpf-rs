@@ -90,7 +90,7 @@ dependencies = [
  "clap",
  "iced-x86",
  "libbpf-rs",
- "nix 0.28.0",
+ "nix",
 ]
 
 [[package]]
@@ -210,7 +210,7 @@ version = "3.4.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "672465ae37dc1bc6380a6547a8883d5dd397b0f1faaad4f265726cc7042a5345"
 dependencies = [
- "nix 0.28.0",
+ "nix",
  "windows-sys",
 ]
 
@@ -328,12 +328,11 @@ dependencies = [
 
 [[package]]
 name = "libbpf-sys"
-version = "1.4.1+v1.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8d45233915cb9e961ddf073fc1e4a31b786d63180eed9b88dba823f688ce2df7"
+version = "1.5.0+v1.5.0"
+source = "git+https://github.com/jfernandez/libbpf-sys.git?branch=libbpf-1.5.0#0decaab7d901a90a770cffac4823549816a4ae71"
 dependencies = [
  "cc",
- "nix 0.27.1",
+ "nix",
  "pkg-config",
 ]
 
@@ -393,17 +392,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5a634b1c61a95585bd15607c6ab0c4e5b226e695ff2800ba0cdccddf208c406c"
 dependencies = [
  "autocfg",
-]
-
-[[package]]
-name = "nix"
-version = "0.27.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2eb04e9c688eff1c89d72b407f168cf79bb9e867a9d3323ed6c01519eb9cc053"
-dependencies = [
- "bitflags 2.5.0",
- "cfg-if",
- "libc",
 ]
 
 [[package]]
@@ -837,7 +825,7 @@ dependencies = [
  "libbpf-cargo",
  "libbpf-rs",
  "libc",
- "nix 0.28.0",
+ "nix",
  "plain",
  "vmlinux",
 ]
@@ -949,7 +937,7 @@ dependencies = [
  "ctrlc",
  "libbpf-cargo",
  "libbpf-rs",
- "nix 0.28.0",
+ "nix",
  "vmlinux",
 ]
 
